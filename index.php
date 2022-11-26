@@ -1,13 +1,13 @@
 <?php
 
 /*
-    Plugin Name: Featured Professor
+    Plugin Name: Featured Professor Block Type
     Version: 1.0
     Author: lilKriT
     Author URI: https://lilkrit.dev
 */
 
-if (!defined("ABSPATH")) exit();
+if (!defined("ABSPATH")) exit;
 
 class FeaturedProfessor
 {
@@ -18,7 +18,7 @@ class FeaturedProfessor
 
     function onInit()
     {
-        wp_register_script("featuredProfessorScript", plugin_dir_url(__FILE__) . "build/index.js", array("wp-blocks", "wp-i18n", "wp_editor"));
+        wp_register_script("featuredProfessorScript", plugin_dir_url(__FILE__) . "build/index.js", array("wp-blocks", "wp-i18n", "wp-editor"));
         wp_register_style("featuredProfessorStyle", plugin_dir_url(__FILE__) . "build/index.css");
 
         register_block_type("fprof/featured-professor", array(

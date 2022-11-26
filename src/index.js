@@ -15,7 +15,11 @@ function EditComponent() {
   return (
     <div className="featured-professor-wrapper">
       <div className="professor-select-container">
-        We will have a select dropdown here.
+        <select>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
       </div>
       <div>The HTML preview of the selected professor will appear here.</div>
     </div>
