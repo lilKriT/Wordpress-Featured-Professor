@@ -1,0 +1,25 @@
+{
+  "name": "featured-professor",
+  "version": "1.0.0",
+  "description": "A plugin that adds a custom block which shows a chosen professor and links to his page. Following a Udemy tutorial.\r Created by lilKriT.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lilKriT/Wordpress-Featured-Professor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lilKriT/Wordpress-Featured-Professor/issues"
+  },
+  "homepage": "https://github.com/lilKriT/Wordpress-Featured-Professor#readme",
+  "dependencies": {
+    "@wordpress/scripts": "^24.6.0"
+  }
+}
