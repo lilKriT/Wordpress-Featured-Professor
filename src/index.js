@@ -1,3 +1,4 @@
+import { useSelect } from "@wordpress/data";
 import "./index.scss";
 
 wp.blocks.registerBlockType("fprof/featured-professor", {
@@ -15,6 +16,16 @@ wp.blocks.registerBlockType("fprof/featured-professor", {
 });
 
 function EditComponent(props) {
+  const allProfessors = useSelect((select) => {
+    return select("core").getEntityRecords("postType", "professor", {
+      per_page: -1,
+    });
+  });
+
+  console.log(allProfessors);
+
+  if (allProfessors == undefined) return <p>Loading...</p>;
+
   return (
     <div className="featured-professor-wrapper">
       <div className="professor-select-container">
@@ -25,15 +36,13 @@ function EditComponent(props) {
           }}
         >
           <option value="">Select a professor</option>
-          <option value="1" selected={props.attributes.profID == 1}>
-            1
-          </option>
-          <option value="2" selected={props.attributes.profID == 2}>
-            2
-          </option>
-          <option value="3" selected={props.attributes.profID == 3}>
-            3
-          </option>
+          {allProfessors.map((el) => {
+            return (
+              <option value={el.id} selected={props.attributes.profID == el.id}>
+                {el.title.rendered}
+              </option>
+            );
+          })}
         </select>
       </div>
       <div>The HTML preview of the selected professor will appear here.</div>
