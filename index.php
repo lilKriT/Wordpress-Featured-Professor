@@ -9,6 +9,8 @@
 
 if (!defined("ABSPATH")) exit;
 
+require_once plugin_dir_path(__FILE__) . 'inc/generateProfessorHTML.php';
+
 class FeaturedProfessor
 {
     function __construct()
@@ -30,9 +32,10 @@ class FeaturedProfessor
 
     function renderProfessor($attributes)
     {
-        if ($attributes["profID"]) {
+        $id = $attributes["profID"];
+        if ($id) {
             wp_enqueue_style("featuredProfessorStyle");
-            return "<div class='professor-callout'>Hello Professor</div>";
+            return generateProfessorHTML($id);
         } else {
             return null;
         }
