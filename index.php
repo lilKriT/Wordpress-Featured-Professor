@@ -30,7 +30,12 @@ class FeaturedProfessor
 
     function renderProfessor($attributes)
     {
-        return "<p>We will replace this soon</p>";
+        if ($attributes["profID"]) {
+            wp_enqueue_style("featuredProfessorStyle");
+            return "<div class='professor-callout'>Hello Professor</div>";
+        } else {
+            return null;
+        }
     }
 }
 
