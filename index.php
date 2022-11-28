@@ -52,8 +52,7 @@ class FeaturedProfessor
 
     function getProfHTML($data)
     {
-
-        return "<h4>Hello endpoint</h4>";
+        return generateProfessorHTML($data["profID"]);
     }
 }
 
