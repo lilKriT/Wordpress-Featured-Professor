@@ -21,18 +21,26 @@ function EditComponent(props) {
   const [thePreview, setThePreview] = useState("");
 
   useEffect(() => {
-    updateTheMeta();
+    if (props.attributes.profID) {
+      updateTheMeta();
 
-    async function go() {
-      const response = await apiFetch({
-        path: `featuredProfessor/v1/getHTML?profID=${props.attributes.profID}`,
-        method: "GET",
-      });
-      setThePreview(response);
+      async function go() {
+        const response = await apiFetch({
+          path: `featuredProfessor/v1/getHTML?profID=${props.attributes.profID}`,
+          method: "GET",
+        });
+        setThePreview(response);
+      }
+
+      go();
     }
-
-    go();
   }, [props.attributes.profID]);
+
+  useEffect(() => {
+    return () => {
+      updateTheMeta();
+    };
+  }, []);
 
   function updateTheMeta() {
     const profsForMeta = wp.data
@@ -44,11 +52,12 @@ function EditComponent(props) {
         return arr.indexOf(x) == index;
       });
 
-    console.log(profsForMeta);
-
-    wp.data
-      .dispatch("core/editor")
-      .editPost({ meta: { featureProfessor: profsForMeta } });
+    profsForMeta.forEach((el, index) => {
+      console.log(index);
+      wp.data
+        .dispatch("core/editor")
+        .editPost({ meta: { featuredProfessor: profsForMeta[index] } });
+    });
   }
 
   const allProfessors = useSelect((select) => {
