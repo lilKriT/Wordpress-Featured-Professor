@@ -16,6 +16,7 @@ class FeaturedProfessor
     function __construct()
     {
         add_action("init", [$this, "onInit"]);
+        add_action("rest_api_init", [$this, "profHTML"]);
     }
 
     function onInit()
@@ -39,6 +40,20 @@ class FeaturedProfessor
         } else {
             return null;
         }
+    }
+
+    function profHTML()
+    {
+        register_rest_route("featuredProfessor/v1", "getHTML", array(
+            "methods" => WP_REST_SERVER::READABLE,
+            "callback" => [$this, "getProfHTML"]
+        ));
+    }
+
+    function getProfHTML($data)
+    {
+
+        return "<h4>Hello endpoint</h4>";
     }
 }
 
