@@ -5,6 +5,8 @@
     Version: 1.0
     Author: lilKriT
     Author URI: https://lilkrit.dev
+    Text Domain: featured-professor
+    Domain Path: /languages
 */
 
 if (!defined("ABSPATH")) exit;
@@ -23,6 +25,8 @@ class FeaturedProfessor
 
     function onInit()
     {
+        load_plugin_textdomain("featured-professor", false, dirname(plugin_basename(__FILE__)) . "/languages");
+
         register_meta("post", "featuredProfessor", array(
             "show_in_rest" => true,
             "type" => "number",
