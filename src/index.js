@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import apiFetch from "@wordpress/api-fetch";
 import "./index.scss";
 
+const __ = wp.i18n.__;
+
 wp.blocks.registerBlockType("fprof/featured-professor", {
   title: "Professor Callout",
   description: "Include a featured block of your professor",
@@ -77,7 +79,9 @@ function EditComponent(props) {
             console.log(e.target.value);
           }}
         >
-          <option value="">Select a professor</option>
+          <option value="">
+            {__("Select a professor", "featured-professor")}
+          </option>
           {allProfessors.map((el) => {
             return (
               <option value={el.id} selected={props.attributes.profID == el.id}>
