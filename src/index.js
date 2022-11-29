@@ -52,12 +52,10 @@ function EditComponent(props) {
         return arr.indexOf(x) == index;
       });
 
-    profsForMeta.forEach((el, index) => {
-      console.log(index);
-      wp.data
-        .dispatch("core/editor")
-        .editPost({ meta: { featuredProfessor: profsForMeta[index] } });
-    });
+    // console.log("Adding: " + index);
+    wp.data
+      .dispatch("core/editor")
+      .editPost({ meta: { featuredProfessor: profsForMeta } });
   }
 
   const allProfessors = useSelect((select) => {
